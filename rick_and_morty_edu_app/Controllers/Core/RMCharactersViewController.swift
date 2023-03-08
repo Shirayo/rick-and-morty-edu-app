@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Controller to show and search for Charecters
 final class RMCharactersViewController: UIViewController {
 
     override func viewDidLoad() {
