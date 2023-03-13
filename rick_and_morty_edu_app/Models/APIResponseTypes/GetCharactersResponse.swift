@@ -12,9 +12,3 @@ struct GetCharactersResponse: Codable {
     let results: [RMCharacter]
 }
 
-struct InfoModel: Codable {
-    let count: Int
-    let pages: Int
-    let next: String?
-    let prev: String?
-}

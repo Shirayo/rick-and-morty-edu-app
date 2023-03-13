@@ -51,7 +51,6 @@ final class RMService {
             }
         }
         task.resume()
-        
     }
     
     // MARK: - Private
@@ -64,8 +63,4 @@ final class RMService {
         request.httpMethod = rmRequest.httpMethod
         return request
     }
-}
-
-extension RMRequest {
-    static let listCharactersRequest = RMRequest(endpoint: .character)
 }
