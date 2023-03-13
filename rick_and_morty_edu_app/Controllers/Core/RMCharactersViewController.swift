@@ -19,30 +19,30 @@ final class RMCharactersViewController: UIViewController {
         let request = RMRequest(
             endpoint: .character,
 //            pathComponents: ["1"],
-            queryParameters: [.init(name: "name", value: "Rick")]
+            queryParameters: [
+                .init(name: "name", value: "Rick"),
+                .init(name: "status", value: "alive")]
         )
         print(request.url)
         
-        RMService.shared.execute(request,
-                                 expecting: RMCharacter.self) { result in
+//        RMService.shared.execute(request,
+//                                 expecting: RMCharacter.self) { result in
 //            switch result {
-//            case .success(result) : break
-//                
-//            case .failure(error): break
-//                
+//            case .success: break
+//
+//            case .failure(let error): break
+//                print(String(describing: error))
 //            }
+//        }
+        RMService.shared.execute(.listCharactersRequest, expecting: GetCharactersResponse.self) { result in
+            switch result {
+            case .success(let model):
+                print("Total \(model.info.count)")
+                print("Pages \(model.info.pages)")
+                print("Results \(model.results.count)")
+            case .failure(let error):
+                print(String(describing: error))
+            }
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
